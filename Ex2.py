@@ -26,7 +26,8 @@ def gcd(a, b):
 
 
 class Rational:
-    max = None
+    _max = None
+    max = _max
 
     def __init__(self, numerator, denominator=1):
         if denominator == 0:
@@ -34,8 +35,9 @@ class Rational:
         else:
             self.n = numerator
             self.d = denominator
-        if Rational.max is None or self > Rational.max:
-            Rational.max = self
+        if Rational._max is None or self > Rational._max:
+            Rational._max = self
+            Rational.max = "Rational(" + str(Rational._max) + ")"
 
     def __get__(self, instance, owner):
         return self
