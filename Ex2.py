@@ -34,8 +34,11 @@ class Rational:
         else:
             self.n = numerator
             self.d = denominator
-        if Rational.max == None:
+        if Rational.max is None or self > Rational.max:
             Rational.max = self
+
+    def __get__(self, instance, owner):
+        return self
 
     def __add__(self, other):
         return Rational(self.n * other.d + other.n * self.d,
@@ -58,10 +61,9 @@ class Rational:
         return not other < self
 
     def __eq__(self, other):
-        return ((self.n == other.n) and (self.d == other.d))
+        return (self.n == other.n) and (self.d == other.d)
 
     def __ne__(self, other):
-        # return ((self.n != other.n) or (self.d != other.d))
         return not self == other
 
     def __gt__(self, other):
@@ -83,11 +85,11 @@ class Rational:
         return "Rational(%d, %d)" % (n, d)
 
 
+print(Rational.max)
 half = Rational(5, 10)
-print(repr(Rational.max))
-third = Rational(8, 24)
 print(Rational.max)
-two = Rational(2)
+two = Rational(2, 1)
+print(half.max)
 print(Rational.max)
-print(two)
-print(repr(two))
+# print(half)
+# print(repr(Rational.self.max))
