@@ -117,7 +117,7 @@ def my_zip(iterable1, iterable2, fill=None):
 
 g = (3 * i for i in range(5))
 for first, second in my_zip(g, ["a", "b", "c"], "bye"):
-    print(first, second)
+    print(my_zip(g, ["a", "b", "c"], "bye"))
 
 
 # ---------------------------------- Q5
